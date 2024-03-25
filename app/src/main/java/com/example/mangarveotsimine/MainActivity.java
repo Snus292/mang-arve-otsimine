@@ -1,6 +1,6 @@
 package com.example.mangarveotsimine;
 
-
+import android.widget.Toast;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -39,7 +39,20 @@ public class MainActivity extends AppCompatActivity {
     public void sisend(View v){
         if (!gameFinished){
             attempts++;
+
             int inp=Integer.parseInt(etInput.getText().toString());
+            try {
+                inp = Integer.parseInt(etInput.getText().toString());
+                if (inp < 0 || inp > 10) {
+                    // Выводим предупреждение, что число должно быть в диапазоне от 0 до 10
+                    Toast.makeText(getApplicationContext(), "Число должно быть от 0 до 10", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                // Выводим предупреждение, если введенное значение не является числом
+                Toast.makeText(getApplicationContext(), "Пожалуйста, введите число", Toast.LENGTH_SHORT).show();
+                return;
+            }
             if (inp > guess)
                 tvInfo.setText(getResources().getString(R.string.ahead));
             if (inp < guess)
