@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">arva ära arv</string>
+    <string name="behind">Vali suurem arv</string>
+    <string name="ahead">Vali vähem arv</string>
+    <string name="hit">Hurra!</string>
+    <string name="input_value">Sisesta arv</string>
+    <string name="play_more">Mängime veel?</string>
+    <string name="try_to_guess">Proovi arve otsida (1 &#8211; 10)</string>
+    <string name="error">Vale siseng!</string>
+</resources>
