@@ -59,30 +59,41 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Пожалуйста, введите число", Toast.LENGTH_SHORT).show();
                 return;
             }
+            //соответствует ли введенное число загаданному
+            //меньше загаданного
             if (inp > guess)
                 tvInfo.setText(getResources().getString(R.string.ahead));
+            //больше загаданного
             if (inp < guess)
                 tvInfo.setText(getResources().getString(R.string.behind));
+            //число угадано
             if (inp == guess)
             {
-                //количество попыток в сообщение
+
+
                 tvInfo.setText(getResources().getString(R.string.hit));
+                //Изменение текста кнопки
                 bControl.setText(getResources().getString(R.string.play_more));
+                //флаг завершения
                 gameFinished = true;
+                //поиск тектового поля
                 TextView textViewAttempts = findViewById(R.id.textViewAttempts);
+                //отображаем попыток
                 textViewAttempts.setText(getResources().getString(R.string.attempts) + attempts);
             } else {
+                //если число не угадано
             }
         }
         else
         {
-            guess = (int)(Math.random()*10);
-            bControl.setText(getResources().getString(R.string.input_value));
+            guess = (int)(Math.random()*10); // новое число
+            bControl.setText(getResources().getString(R.string.input_value)); // ввод
             tvInfo.setText(getResources().getString(R.string.try_to_guess));
-            TextView attemptsTextView = findViewById(R.id.textViewAttempts);
+            TextView attemptsTextView = findViewById(R.id.textViewAttempts); очистка поля коллисества попыток
+
             attemptsTextView.setText("");
-            attempts = 0;
-            gameFinished = false;
+            attempts = 0; сборс счетчика
+            gameFinished = false; флаг завершения
         }
         etInput.setText("");
     }
