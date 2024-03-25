@@ -14,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
     Button bControl;
     int guess;
     boolean gameFinished;
+
+    int attempts = 0;
+    // + количество попыток
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void sisend(View v){
         if (!gameFinished){
+            attempts++;
             int inp=Integer.parseInt(etInput.getText().toString());
             if (inp > guess)
                 tvInfo.setText(getResources().getString(R.string.ahead));
@@ -40,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 tvInfo.setText(getResources().getString(R.string.behind));
             if (inp == guess)
             {
-                tvInfo.setText(getResources().getString(R.string.hit));
+                //количество попыток в сообщение
+                tvInfo.setText(getResources().getString(R.string.hit) + " " + getResources().getString(R.string.attempts) + attempts);
                 bControl.setText(getResources().getString(R.string.play_more));
                 gameFinished = true;
             }
@@ -50,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
             guess = (int)(Math.random()*10);
             bControl.setText(getResources().getString(R.string.input_value));
             tvInfo.setText(getResources().getString(R.string.try_to_guess));
+            attempts = 0;
             gameFinished = false;
         }
         etInput.setText("");
     }
+
 }

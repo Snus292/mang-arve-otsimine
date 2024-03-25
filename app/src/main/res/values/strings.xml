@@ -7,4 +7,6 @@
     <string name="play_more">Mängime veel?</string>
     <string name="try_to_guess">Proovi arve otsida (1 &#8211; 10)</string>
     <string name="error">Vale siseng!</string>
+    <string name="attempts">your attempts:</string>
+    attempts
 </resources>
