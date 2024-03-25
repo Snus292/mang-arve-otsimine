@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     TextView tvInfo;
+
     EditText etInput;
     Button bControl;
     int guess;
@@ -46,9 +47,12 @@ public class MainActivity extends AppCompatActivity {
             if (inp == guess)
             {
                 //количество попыток в сообщение
-                tvInfo.setText(getResources().getString(R.string.hit) + " " + getResources().getString(R.string.attempts) + attempts);
+                tvInfo.setText(getResources().getString(R.string.hit));
                 bControl.setText(getResources().getString(R.string.play_more));
                 gameFinished = true;
+                TextView textViewAttempts = findViewById(R.id.textViewAttempts);
+                textViewAttempts.setText(getResources().getString(R.string.attempts) + attempts);
+            } else {
             }
         }
         else
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
             guess = (int)(Math.random()*10);
             bControl.setText(getResources().getString(R.string.input_value));
             tvInfo.setText(getResources().getString(R.string.try_to_guess));
+            TextView attemptsTextView = findViewById(R.id.textViewAttempts);
+            attemptsTextView.setText("");
             attempts = 0;
             gameFinished = false;
         }
