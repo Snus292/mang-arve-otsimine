@@ -36,20 +36,26 @@ public class MainActivity extends AppCompatActivity {
         //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    //вызван при нажатии на кнопку
     public void sisend(View v){
+        //завершена ли уже игра?
         if (!gameFinished){
+            //хранения введенного числа
+            int inp;
+            //увеличение счетчика попыток
             attempts++;
 
-            int inp=Integer.parseInt(etInput.getText().toString());
+
             try {
                 inp = Integer.parseInt(etInput.getText().toString());
                 if (inp < 0 || inp > 10) {
-                    // Выводим предупреждение, что число должно быть в диапазоне от 0 до 10
+                    // число вне диапозона
                     Toast.makeText(getApplicationContext(), "Число должно быть от 0 до 10", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
             } catch (NumberFormatException e) {
-                // Выводим предупреждение, если введенное значение не является числом
+                // значение не является числом
                 Toast.makeText(getApplicationContext(), "Пожалуйста, введите число", Toast.LENGTH_SHORT).show();
                 return;
             }
